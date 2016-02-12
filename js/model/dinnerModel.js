@@ -3,46 +3,71 @@ var DinnerModel = function() {
  
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
-
+	var numberOfGuests = 1;
+	var fullMenu = [];
 
 	this.setNumberOfGuests = function(num) {
-		//TODO Lab 2
+		numberOfGuests = num;
 	}
 
 	// should return 
 	this.getNumberOfGuests = function() {
-		//TODO Lab 2
+		return numberOfGuests;
 	}
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-		//TODO Lab 2
+		for (var i = 0; i < fullMenu.length; i++) {
+			if (fullMenu[i].type === type) {
+				return fullMenu[i];
+			}
+		}
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		//TODO Lab 2
+		return fullMenu;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
-		//TODO Lab 2
+		var allIngredients = [];
+		for (var i = 0; i < menu.length; i++) {
+			for (var j = 0; j < menu[i].ingredients.length; j++) {
+				allIngredients.push(menu[i].ingredients[j]);
+			}
+		}
+		return allIngredients;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-		//TODO Lab 2
+		var totalMenuPrice = 0;
+		for (var i = 0; i < menu.length; i++) {
+			for (var j = 0; j < menu[i].ingredients.length; j++) {
+				totalMenuPrice += menu[i].ingredients[j].price;
+			}
+		}
+		return totalMenuPrice;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		//TODO Lab 2 
+		var dish = this.getDish(id);
+		if (typeof dish !== 'undefined') {
+			this.removeDishFromMenu(id); // avoid duplicates
+			menu.push(dish);
+		}
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		//TODO Lab 2
+		for (var i = 0; i < menu.length; i++) {
+			if (menu[i].id === id) {
+				menu.splice(id, 1);
+			}
+		}
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -75,7 +100,6 @@ var DinnerModel = function() {
 			}
 		}
 	}
-
 
 	// the dishes variable contains an array of all the 
 	// dishes in the database. each dish has id, name, type,
