@@ -13,12 +13,11 @@
   </head>
 
   <body>
-    <!-- Bootstrap container -->
-  	<div class="container">
-      <div class="page-header">
-        <h1>HOMELETTE <small><i>From the best chefs in the world directly into your kitchen</i></small></h1>
-      </div>
+    <div id="headerView" class="container-fluid">
+      <h1>HOMELETTE <small style="color: #333333;"><i>From the best chefs in the world directly into your kitchen</i></small></h1>
+    </div>
 
+  	<div class="container">
       <div id="homeScreen" class="row">
         <div id="homeView" class="col-md-6">
           <div id="homePanel" class="panel panel-default">
@@ -28,7 +27,7 @@
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
               <br>
               <p>start quickly</p>
-              <button id="homeButton" class="btn btn-default">Create new dinner</button>
+              <button id="createNewDinner" type="button" class="btn btn-warning">Create new dinner</button>
             </div>
           </div>
         </div> <!-- end homeView -->
@@ -40,10 +39,10 @@
           <div class="row">
             <div class="col-md-6"><p>People: <span id="numberOfGuests"></span></p></div>
             <div class="col-md-6" align="right">
-              <button id="minusGuest" class="btn btn-default">
+              <button id="minusGuest" type="button" class="btn btn-default">
                 <span class="glyphicon glyphicon-minus"></span>
               </button>
-              <button id="plusGuest" class="btn btn-default">
+              <button id="plusGuest" type="button" class="btn btn-default">
                 <span class="glyphicon glyphicon-plus"></span>
               </button>
             </div>
@@ -61,6 +60,7 @@
           <div class="row">
             <div class="col-md-6 col-md-offset-6"><p align="right">SEK 0.00</p></div>
           </div>
+          <button id="confiermButton" class="btn btn-warning btn-block">Confirm Dinner</button>
         </div> <!-- end costView -->
 
         <div class="col-md-9">
@@ -71,7 +71,7 @@
               <div class="col-md-6">
                 <form class="form-inline">
                   <input class="form-control" placeholder="Enter key words">
-                  <button id="searchButton" class="btn btn-default">Search</button>
+                  <button id="Search" type="button" class="btn btn-warning">Search</button>
                 </form>
               </div>
               <div class="col-md-6">
