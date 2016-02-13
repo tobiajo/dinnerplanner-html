@@ -8,7 +8,7 @@ $(function() {
 
 	$('#createNewDinner').click(function(){
 		$('#homeScreen').toggleClass('hidden');
-		$('body').toggleClass('hideBackgroundImage');
+		$('body').toggleClass('hiddenBackgroundImage');
 		$('#dinnerScreen').toggleClass('hidden');
 	});
 });
