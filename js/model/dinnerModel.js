@@ -56,7 +56,6 @@ var DinnerModel = function() {
 	this.addDishToMenu = function(id) {
 		var dish = this.getDish(id);
 		if (typeof dish !== 'undefined') {
-			this.removeDishFromMenu(id); // avoid duplicates
 			menu.push(dish);
 		}
 	}

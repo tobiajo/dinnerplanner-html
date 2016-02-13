@@ -3,10 +3,15 @@ $(function() {
 	var model = new DinnerModel();
 	
 	//And create the needed controllers and views
-	var exampleView = new ExampleView($("#exampleView"), model);
+	var costView = new CostView($("#costView"), model);
+	var selectView = new SelectView($("#selectView"), model);
 
 	$("#homeButton").click(function(){
-		$("#homeView").toggleClass('hidden');
-		$("#dinnerView").toggleClass('hidden');
+		$("#homeScreen").toggleClass('hidden');
+		$("#dinnerScreen").toggleClass('hidden');
+	});
+
+	$("#searchButton").click(function(){
+		
 	});
 });

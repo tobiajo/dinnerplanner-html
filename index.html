@@ -10,53 +10,101 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
     <!-- Overrides Bootstrap CSS -->
     <link rel="stylesheet" href="css/style.css">
-
   </head>
+
   <body>
+    <!-- Bootstrap container -->
   	<div class="container">
-      <div id="headerView">
-        <div class="page-header">
-          <h1>HOMELETTE <small><i>From the best chefs in the world directly into your kitchen</i></small></h1>
-        </div>
-      </div> <!-- end headerView -->
-      <div id="homeView" class="show">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="panel panel-default" id="homePanel">
-              <div class="panel-body">
-                <h2>A Home Dinner Service</h2>
-                <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <br>
-                <p>start quickly</p>
-                <button type="button" class="btn btn-default" id="homeButton">Create new dinner</button>
-              </div>
+      <div class="page-header">
+        <h1>HOMELETTE <small><i>From the best chefs in the world directly into your kitchen</i></small></h1>
+      </div>
+
+      <div id="homeScreen" class="row">
+        <div id="homeView" class="col-md-6">
+          <div id="homePanel" class="panel panel-default">
+            <div class="panel-body">
+              <h3>A Home Dinner Service</h3>
+              <hr>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <br>
+              <p>start quickly</p>
+              <button id="homeButton" class="btn btn-default">Create new dinner</button>
             </div>
           </div>
-        </div>
-      </div> <!-- end homeView -->
-      <div id="dinnerView" class="hidden">
-        <div class="row">
-          <div class="col-md-3">
-            <h1>Dinner planner</h1>
-              <div id="exampleView">
-                <div>
-                  Number of guests: <span id="numberOfGuests"></span>
-                </div>
-                <div>
-                    <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
-                  <button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+        </div> <!-- end homeView -->
+      </div>
+
+      <div id="dinnerScreen" class="row hidden">
+        <div id="costView" class="col-md-3">
+          <h3>My dinner</h3>
+          <div class="row">
+            <div class="col-md-6"><p>People: <span id="numberOfGuests"></span></p></div>
+            <div class="col-md-6" align="right">
+              <button id="minusGuest" class="btn btn-default">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+              <button id="plusGuest" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-6"><p>Dish Name</p></div>
+            <div class="col-md-6"><p align="right">Cost</p></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6"><p>Pending</p></div>
+            <div class="col-md-6"><p align="right">0.00</p></div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-6"><p align="right">SEK 0.00</p></div>
+          </div>
+        </div> <!-- end costView -->
+
+        <div class="col-md-9">
+          <div id="selectView">
+            <h3>SELECT DISH</h3>
+            <hr>
+            <div class="row">
+              <div class="col-md-6">
+                <form class="form-inline">
+                  <input class="form-control" placeholder="Enter key words">
+                  <button id="searchButton" class="btn btn-default">Search</button>
+                </form>
+              </div>
+              <div class="col-md-6">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Main
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#" onClick="return false;">Main</a></li>
+                    <li><a href="#" onClick="return false;">Starter</a></li>
+                    <li><a href="#" onClick="return false;">Desert</a></li>
+                  </ul>
                 </div>
               </div>
+              <br><br><br>
+              <div id="dishes"></div>
+            </div> <!-- end selectView -->
           </div>
-          <div class="col-md-9">
-            <p>
-              TODO: The rest of the web app :)
-            </p>
-          </div>
+
+          <div id="detailsView" class="hidden">
+            <p>Dish Details (under construction)</p>
+          </div> <!-- end detailsView -->
         </div>
-      </div> <!-- end dinnerView -->
-  	</div> <!-- end Bootstrap container -->
+      </div>
+  	</div>
+
+    <div id="overviewScreen" class="hidden">
+      <div id="overviewView">
+        <p>Dinner Overview (under construction)</p>
+      </div> <!-- end overviewView -->
+    </div>
+
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -66,7 +114,9 @@
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
-	<script src="js/view/exampleView.js"></script>
-	<script src="js/view/exampleViewController.js"></script>
+	<script src="js/view/costView.js"></script>
+	<script src="js/view/costViewController.js"></script>
+  <script src="js/view/selectView.js"></script>
+  <script src="js/view/selectViewController.js"></script>
   </body>
 </html>
