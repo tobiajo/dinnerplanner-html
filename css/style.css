@@ -3,12 +3,17 @@ body {
 	background-size: cover;
 }
 
+hr {
+	border-color: #333333;
+}
+
 #headerView {
 	background-color: rgba(240,230,140,0.5);
 }
 
 #homePanel {
 	background-color: rgba(255,255,255,0.5);
+	border-style: none;
 	position: relative;
 	top: 100px;
 }
