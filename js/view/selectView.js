@@ -18,5 +18,5 @@ var getDishHTML = function(dish, model) {
 		'<img src="images/' + dish.image + '" width="100%">' +
 		'<button id="icecreamDetails" class="btn btn-default btn-block">' + dish.name + '</button>' +
 		'<p>' + model.getDummyText() + '</p>' +
-	'</div>\n';
+	'</div>';
 }
