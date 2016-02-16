@@ -6,6 +6,7 @@ $(function() {
 	var costView = new CostView($('#costView'), model);
 	var selectView = new SelectView($('#selectView'), model);
 	var detailsView = new DetailsView($('#detailsView'), model);
+	var overviewView = new OverviewView($('#overviewView'), model);
 
 	$('#createNewDinner').click(function(){
 		$('#homeScreen').toggleClass('hidden');
@@ -16,5 +17,15 @@ $(function() {
 	$('#icecreamDetails').click(function(){
 		$('#selectView').toggleClass('hidden');
 		$('#detailsView').toggleClass('hidden');
+	});
+
+	$('#confirmDinnerBtn').click(function(){
+		$('#dinnerScreen').toggleClass('hidden');
+		$('#overviewScreen').toggleClass('hidden');
+	});
+
+	$('#printBtn').click(function(){
+		$('#overviewContainer').toggleClass('hidden');
+		$('#instructionsContainer').toggleClass('hidden');
 	});
 });

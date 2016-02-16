@@ -60,7 +60,7 @@
           <div class="row">
             <div class="col-md-6 col-md-offset-6"><p align="right">SEK 0.00</p></div>
           </div>
-          <button id="confiermButton" class="btn btn-warning btn-block">Confirm Dinner</button>
+          <button id="confirmDinnerBtn" class="btn btn-warning btn-block">Confirm Dinner</button>
         </div> <!-- end costView -->
 
         <div class="col-md-9">
@@ -97,6 +97,8 @@
               <div id="detailsOverview" class="col-md-6"></div>
               <div id="detailsIngredients" class="col-md-6"></div>
             </div>
+            <h3>PREPARATION</h3>
+            <p id="detailsPrep"></p>
           </div> <!-- end detailsView -->
         </div>
       </div>
@@ -104,7 +106,27 @@
 
     <div id="overviewScreen" class="hidden">
       <div id="overviewView">
-        <p>Dinner Overview (under construction)</p>
+        <div class="col-md-10"><h3>My Dinner: 4 people</h3></div>
+        <div class="col-md-2">
+          <br>
+          <button id="backEditbtn" class="btn btn-warning">
+            Go back and edit dinner
+          </button>
+        </div>
+
+        <div class="row"><div class="col-md-12">
+          <hr>
+        </div></div>
+
+        <div id="overviewContainer"></div>
+        <div id="instructionsContainer" class="hidden">(instructions)</div>
+        <div class="col-md-12">
+          <hr>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <button id="printBtn" class="btn btn-warning btn-block" align="center">Print Full Recipe</button>
+        </div>
       </div> <!-- end overviewView -->
     </div>
 
@@ -123,5 +145,7 @@
   <script src="js/view/selectViewController.js"></script>
   <script src="js/view/detailsView.js"></script>
   <script src="js/view/detailsViewController.js"></script>
+  <script src="js/view/overviewView.js"></script>
+  <script src="js/view/overviewController.js"></script>
   </body>
 </html>
