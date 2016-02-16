@@ -4,9 +4,10 @@ var DetailsView = function(container, model) {
 	this.ingredients = container.find('#detailsIngredients');
 	this.prep = container.find('#detailsPrep');
 
-	var dish = model.getDish(100);
+	var dish = model.getDish(200);
 
 	//this.name.html(dish.name);
+<<<<<<< HEAD
 	this.overview.html('<h1>' + dish.name.toUpperCase() + '</h1>' + '<img src="images/' + dish.image + '" width="100%">' +
 		model.getDummyText() + '<br><button id="backBtn" class="btn btn-warning">Back to Select Dish</button>');
 	this.ingredients.html('<div class="col-md-12"><h3>INGREDIENTS FOR 4 PEOPLE</h3><hr></div>' + 
@@ -24,6 +25,10 @@ var getTotalPrice = function(ingredients) {
 		price += ingredients[i].price;
 	}
 	return price;
+=======
+	this.overview.html('<h1>' + dish.name.toUpperCase() + '</h1>' + '<img src="images/' + dish.image + '" width="100%">' + model.getDummyText());
+	this.ingredients.html('<h3>INGREDIENTS FOR 4 PEOPLE</h3><hr>' + getIngredientListHTML(dish.ingredients)) ;
+>>>>>>> origin/master
 }
 
 var getIngredientListHTML = function(ingredients) {
@@ -36,10 +41,10 @@ var getIngredientListHTML = function(ingredients) {
 
 var getIngredientHTML = function(ingredient) {
 	return '' +
-	'<div class="col-md-2">' +
+	'<div class="col-md-3">' +
 		ingredient.quantity + ' ' + ingredient.unit +
 	'</div>' +
-	'<div class="col-md-6">' +
+	'<div class="col-md-5">' +
 		ingredient.name +
 	'</div>' +
 	'<div class="col-md-2">' +
