@@ -6,6 +6,10 @@ var DinnerModel = function() {
 	var numberOfGuests = 1;
 	var fullMenu = [];
 
+	this.getDummyText = function() {
+		return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+	}
+
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;
 	}

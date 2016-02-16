@@ -1,22 +1,22 @@
 var SelectView = function(container, model) {
 	this.dishes = container.find('#dishes');
 
-	this.dishes.html(getDishes());
+	this.dishes.html(getDishes(model));
 }
 
-var getDishes = function() {
+var getDishes = function(model) {
 	var dishes = '';
 	for (var i = 0; i < 10; i++) {
-		dishes += getDish();
+		dishes += getDishHTML(model.getDish(200), model);
 	}
 	return dishes;
 }
 
-var getDish = function() {
+var getDishHTML = function(dish, model) {
 	return '' +
-	'<div class="col-md-2">' +
-		'<img src="images/icecream.jpg" width="100%">' +
-		'<button class="btn btn-default btn-block">Icecream</button>' +
-		'<p>Dummy text</p>' +
-	'</div>';
+	'<div class="col-md-3">' +
+		'<img src="images/' + dish.image + '" width="100%">' +
+		'<button id="icecreamDetails" class="btn btn-default btn-block">' + dish.name + '</button>' +
+		'<p>' + model.getDummyText() + '</p>' +
+	'</div>\n';
 }
