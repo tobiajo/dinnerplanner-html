@@ -6,8 +6,10 @@ var SelectView = function(container, model) {
 
 var getDishes = function(model) {
 	var dishes = '';
-	for (var i = 0; i < 10; i++) {
-		dishes += getDishHTML(model.getDish(200), model);
+	var allDishes = model.getAllDishes('starter');
+	console.log(allDishes);
+	for (var i = 0; i < allDishes.length; i++) {
+		dishes += getDishHTML(allDishes[i], model);
 	}
 	return dishes;
 }
