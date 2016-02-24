@@ -9,7 +9,6 @@ var DinnerModel = function() {
 	var dishId = -1;
 
 	// Observer pattern
-
 	var notifyObservers = function() {
 		for (var i = 0; i < observers.length; i++) {
 			observers[i].update();
