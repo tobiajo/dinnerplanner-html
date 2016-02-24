@@ -33,7 +33,6 @@ var SelectViewController = function(mainCtrl, view, model) {
 
 	view.search.click(function(){
 		var query = view.container.find('#searchForm').val();
-		console.log(query);
 		model.setDishFilter(query);
 	});
 }

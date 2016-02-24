@@ -10,7 +10,7 @@ var CostViewController = function(mainCtrl, view, model) {
 	});
 
 	view.confirmDinner.click(function() {
-		if (model.getFullMenu().length !== 0) {
+		if (model.getMenu().length !== 0) {
 			mainCtrl.dinnerToOverview();
 		}
 	});

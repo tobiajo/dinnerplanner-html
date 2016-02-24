@@ -13,13 +13,13 @@
   </head>
 
   <body>
-    <div id="headerView" class="container-fluid">
-      <h1>HOMELETTE <small style="color: #333333;"><i>  From the best chefs in the world directly into your kitchen</i></small></h1>
-    </div>
+    <div id="headerView" class="container-fluid"> <!-- start headerView -->
+      <h1>HOMELETTE <small style="color: #333333;"><i>From the best chefs in the world directly into your kitchen</i></small></h1>
+    </div> <!-- end headerView -->
 
-  	<div class="container">
-      <div id="homeScreen" class="row">
-        <div id="homeView" class="col-md-6">
+  	<div class="container"> <!-- start Bootstrap container -->
+      <div id="homeScreen" class="row"> <!-- start homeScreen -->
+        <div id="homeView" class="col-md-6"> <!-- start homeView -->
           <div id="homePanel" class="panel panel-default">
             <div class="panel-body">
               <h3>A Home Dinner Service</h3>
@@ -31,10 +31,10 @@
             </div>
           </div>
         </div> <!-- end homeView -->
-      </div>
+      </div> <!-- end homeScreen -->
 
-      <div id="dinnerScreen" class="row hidden">
-        <div id="costView" class="col-md-3">
+      <div id="dinnerScreen" class="row hidden"> <!-- start dinnerScreen -->
+        <div id="costView" class="col-md-3"> <!-- start costView -->
           <h3>My Dinner</h3>
           <div class="row">
             <div class="col-md-6"><p>People: <span id="numberOfGuests"></span></p></div>
@@ -52,10 +52,7 @@
             <div class="col-md-6"><p>Dish Name:</p></div>
             <div class="col-md-6"><p align="right">Cost</p></div>
           </div>
-          <div id="costList" class="row">
-            <div class="col-md-6"><p>Pending</p></div>
-            <div class="col-md-6"><p align="right">0.00</p></div>
-          </div>
+          <div id="costList" class="row"></div>
           <hr>
           <div class="row">
             <div class="col-md-6 col-md-offset-6"><p id="costSum" align="right">SEK 0.00</p></div>
@@ -64,7 +61,7 @@
         </div> <!-- end costView -->
 
         <div class="col-md-9">
-          <div id="selectView">
+          <div id="selectView"> <!-- start selectView -->
             <h3>SELECT DISH</h3>
             <hr>
             <div class="row">
@@ -89,10 +86,10 @@
               </div>
               <br><br><br>
               <div id="dishes"></div>
-            </div> <!-- end selectView -->
-          </div>
+            </div>
+          </div> <!-- end selectView -->
 
-          <div id="detailsView" class="hidden">
+          <div id="detailsView" class="hidden"> <!-- start detailsView -->
             <div class="row">
               <div id="detailsOverview" class="col-md-4"></div>
               <div id="detailsIngredients" class="col-md-8"></div>
@@ -101,11 +98,11 @@
             <p id="detailsPrep"></p>
           </div> <!-- end detailsView -->
         </div>
-      </div>
-  	</div>
+      </div> <!-- end dinnerScreen -->
+  	</div> <!-- end Bootstrap container -->
 
-    <div id="overviewScreen" class="hidden">
-      <div id="overviewView">
+    <div id="overviewScreen" class="hidden"> <!-- start overviewScreen -->
+      <div id="overviewView"> <!-- start overviewView -->
         <div class="col-md-10"><h3>My Dinner: <span id="overviewPeople"></span> people</h3></div>
         <div class="col-md-2">
           <br>
@@ -117,24 +114,23 @@
         <div id="overviewContainer"></div>
         <div id="instructionsContainer" class="hidden"></div>
       </div> <!-- end overviewView -->
-    </div>
-
+    </div> <!-- end overviewScreen -->
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
-	<!-- The application JavaScript code -->
-	<script src="js/app.js"></script>
-	<script src="js/model/dinnerModel.js"></script>
-	<script src="js/view/costView.js"></script>
-	<script src="js/view/costViewController.js"></script>
-  <script src="js/view/selectView.js"></script>
-  <script src="js/view/selectViewController.js"></script>
-  <script src="js/view/detailsView.js"></script>
-  <script src="js/view/detailsViewController.js"></script>
-  <script src="js/view/overviewView.js"></script>
-  <script src="js/view/overviewViewController.js"></script>
+  	<!-- The application JavaScript code -->
+  	<script src="js/app.js"></script>
+  	<script src="js/model/dinnerModel.js"></script>
+  	<script src="js/view/costView.js"></script>
+  	<script src="js/view/costViewController.js"></script>
+    <script src="js/view/selectView.js"></script>
+    <script src="js/view/selectViewController.js"></script>
+    <script src="js/view/detailsView.js"></script>
+    <script src="js/view/detailsViewController.js"></script>
+    <script src="js/view/overviewView.js"></script>
+    <script src="js/view/overviewViewController.js"></script>
   </body>
 </html>

@@ -13,6 +13,10 @@ var DetailsViewController = function(mainCtrl, view, model) {
 		view.container.find('#confirmDish').click(function() {
 			model.addDishToMenu(model.getDishId());
 		});
+
+		view.container.find('#removeDish').click(function() {
+			model.removeDishFromMenu(model.getDishId());
+		});
 	}
 
 	// Function calls

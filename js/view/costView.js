@@ -9,20 +9,18 @@ var CostView = function(container, model) {
 	// Functions
 	this.update = function () {
 		numberOfGuests.html(model.getNumberOfGuests());
-		if (model.getFullMenu().length !== 0) {
-			var costList = container.find('#costList');
-			var costSum = container.find('#costSum');
-			costList.html(getCostListHTML());
-			costSum.html('SEK ' + model.getTotalMenuPrice());
-		}
+		var costList = container.find('#costList');
+		var costSum = container.find('#costSum');
+		costList.html(getCostListHTML());
+		costSum.html('SEK ' + model.getMenuPrice().toFixed(2));
 	}
 
 	var getCostListHTML = function() {
-		var fullMenu = model.getFullMenu();
+		var menu = model.getMenu();
 		var html = '';
-		for (var i = 0; i < fullMenu.length; i++) {
-			html += '<div class="col-md-6"><p>' + fullMenu[i].name + '</p></div>';
-			html += '<div class="col-md-6"><p align="right">' + model.getDishPrice(fullMenu[i]) + '</p></div>';
+		for (var i = 0; i < menu.length; i++) {
+			html += '<div class="col-md-6"><p>' + menu[i].name + '</p></div>';
+			html += '<div class="col-md-6"><p align="right">' + model.getDishPrice(menu[i]).toFixed(2) + '</p></div>';
 		}
 		return html;
 	}

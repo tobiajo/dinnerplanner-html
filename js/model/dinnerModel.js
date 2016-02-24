@@ -1,12 +1,12 @@
 var DinnerModel = function() {
  
  	// Variables
+ 	var observers = [];
+	var numberOfGuests = 1;
+	var dishId = -1;
  	var dishType = 'main dish';
 	var dishFilter = '';
-	var numberOfGuests = 1;
 	var menu = [];
-	var observers = [];
-	var dishId = -1;
 
 	// Observer pattern
 	var notifyObservers = function() {
@@ -19,14 +19,16 @@ var DinnerModel = function() {
 		observers.push(ob);
 	}
 
-	// Getters and setters
-	this.setDishId = function(id) {
-		dishId = id;
+	// Setters
+	this.setNumberOfGuests = function(num) {
+		if (num < 1) return;
+		numberOfGuests = num;
 		notifyObservers();
 	}
 
-	this.getDishId = function() {
-		return dishId;
+	this.setDishId = function(id) {
+		dishId = id;
+		notifyObservers();
 	}
 
 	this.setDishType = function(type) {
@@ -34,57 +36,54 @@ var DinnerModel = function() {
 		notifyObservers();
 	}
 
-	this.getDishType = function() {
-		return dishType;
-	}
-
 	this.setDishFilter = function(filter) {
 		dishFilter = filter;
 		notifyObservers();
+	}
+
+	this.addDishToMenu = function(id) {
+		var dish = this.getDish(id);
+		menu.push(dish);
+		notifyObservers();
+	}
+
+	this.removeDishFromMenu = function(id) {
+		for (var i = 0; i < menu.length; i++) {
+			if (menu[i].id.toString() === id) {
+				menu.splice(i, 1);
+				break;
+			}
+		}
+		notifyObservers();
+	}
+
+	// Getters
+	this.getNumberOfGuests = function() {
+		return numberOfGuests;
+	}
+
+	this.getDishId = function() {
+		return dishId;
+	}
+
+	this.getDishType = function() {
+		return dishType;
 	}
 
 	this.getDishFilter = function() {
 		return dishFilter;
 	}
 
-	this.getDummyText = function() {
-		return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-	}
-
-	this.setNumberOfGuests = function(num) {
-		if (num < 1) return;
-		numberOfGuests = num;
-		notifyObservers();
-	}
-
-	// should return 
-	this.getNumberOfGuests = function() {
-		return numberOfGuests;
-	}
-
-	//Returns the dish that is on the menu for selected type 
-	this.getSelectedDish = function(type) {
-		for (var i = 0; i < menu.length; i++) {
-			if (menu[i].type === type) {
-				return menu[i];
-			}
-		}
-	}
-
-	//Returns all the dishes on the menu.
-	this.getFullMenu = function() {
+	this.getMenu = function() {
 		return menu;
 	}
 
-	//Returns all ingredients for all the dishes on the menu.
-	this.getAllIngredients = function() {
-		var allIngredients = [];
+	this.getMenuPrice = function() {
+		var menuPrice = 0;
 		for (var i = 0; i < menu.length; i++) {
-			for (var j = 0; j < menu[i].ingredients.length; j++) {
-				allIngredients.push(menu[i].ingredients[j]);
-			}
+			menuPrice += this.getDishPrice(menu[i]);
 		}
-		return allIngredients;
+		return menuPrice;
 	}
 
 	this.getDishPrice = function(dish) {
@@ -95,38 +94,23 @@ var DinnerModel = function() {
 		return price;
 	}
 
-	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
-	this.getTotalMenuPrice = function() {
-		var totalMenuPrice = 0;
+	this.menuContainsDish = function(id) {
 		for (var i = 0; i < menu.length; i++) {
-			totalMenuPrice += this.getDishPrice(menu[i]);
+			if (menu[i].id.toString() === id) {
+				return true;
+			}
 		}
-		return totalMenuPrice;
+		return false;
 	}
 
-	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
-	//it is removed from the menu and the new one added.
-	this.addDishToMenu = function(id) {
-		var dish = this.getDish(id);
-		if (typeof dish !== 'undefined') {
-			menu.push(dish);
-			notifyObservers();
-			console.log("katt");
-		}
-	}
-
-	//Removes dish from menu
-	this.removeDishFromMenu = function(id) {
-		for (var i = 0; i < menu.length; i++) {
-			if (menu[i].id === id) {
-				menu.splice(id, 1);
+	this.getDish = function(id) {
+	  for(key in dishes){
+			if(dishes[key].id == id) {
+				return dishes[key];
 			}
 		}
 	}
 
-	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
-	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
-	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (type,filter) {
 	  return $(dishes).filter(function(index,dish) {
 		var found = true;
@@ -146,13 +130,8 @@ var DinnerModel = function() {
 	  });	
 	}
 
-	//function that returns a dish of specific ID
-	this.getDish = function (id) {
-	  for(key in dishes){
-			if(dishes[key].id == id) {
-				return dishes[key];
-			}
-		}
+	this.getDummyText = function() {
+		return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
 	}
 
 	// the dishes variable contains an array of all the 
@@ -405,5 +384,4 @@ var DinnerModel = function() {
 			}]
 		}
 	];
-
 }

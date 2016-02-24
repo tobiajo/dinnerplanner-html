@@ -16,7 +16,11 @@ var SelectView = function(container, model) {
 		var dishes = container.find('#dishes');
 		var dishType = container.find('#dishType');
 		dishes.html(getDishesHTML());
-		dishType.html(model.getDishType());
+		dishType.html(capitalizeFirstLetter(model.getDishType()));
+	}
+
+	var capitalizeFirstLetter = function(string) {
+    	return string.charAt(0).toUpperCase() + string.slice(1);
 	}
 
 	var getDishesHTML = function() {
@@ -31,7 +35,7 @@ var SelectView = function(container, model) {
 	var getDishHTML = function(dish) {
 		return '' +
 		'<div class="col-md-3">' +
-			'<img src="images/' + dish.image + '" width="100%">' +
+			'<img src="images/' + dish.image + '" width="100%" height="150px">' +
 			'<button id="' + dish.id + '" class="btn btn-default btn-block dish-btn">' + dish.name + '</button>' +
 			'<p>' + model.getDummyText() + '</p>' +
 		'</div>';
