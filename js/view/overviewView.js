@@ -1,40 +1,49 @@
 var OverviewView = function(container, model) {
 
 	// Variables
-	this.overviewContainer = container.find('#overviewContainer');
-	this.instructionsContainer = container.find('#instructionsContainer');
+	this.goBackAndEditDinner = container.find('#goBackAndEditDinner');
+	this.container = container;
 
 	// Functions
-	var getDishes2 = function() {
+	this.update = function() {
+		var overviewPeople = container.find('#overviewPeople');
+		var overviewContainer = container.find('#overviewContainer');
+		var instructionsContainer = container.find('#instructionsContainer');
+		overviewPeople.html(model.getNumberOfGuests());
+		overviewContainer.html(getDishesHTML() + '<h3>Total:<br>' + model.getTotalMenuPrice() + ' SEK</h3>' + 
+			'<div class="col-md-12"><hr></div>' +
+        	'<div class="col-md-4"></div>' +
+        	'<div class="col-md-4">' +
+          		'<button id="printFullRecipe" class="btn btn-warning btn-block" align="center">Print Full Recipe</button>' +
+        	'</div>');
+		instructionsContainer.html(getInstructionsHTML());
+	}
+
+	var getDishesHTML = function() {
+		var fullMenu = model.getFullMenu();
 		var dishes = '';
-		for (var i = 0; i < 3; i++) {
-			dishes += getDishHTML2(model.getDish(200));
+		for (var i = 0; i < fullMenu.length; i++) {
+			dishes += getDishHTML(fullMenu[i]);
 		}
 		return dishes;
 	}
 
-	var getDishHTML2 = function(dish) {
+	var getDishHTML = function(dish) {
 		return '' +
 		'<div class="col-md-2">' +
 			'<img src="images/' + dish.image + '" width="100%">' +
 			'<button id="icecreamDetails" class="btn btn-default btn-block">' + dish.name + '</button>' +
-			'<p align="right">' + getTotalPrice2(dish.ingredients) + ' SEK </p>' +
-		'</div>\n';
-	}
-
-	var getTotalPrice2 = function(ingredients) {
-		var price = 0;
-		for (var i = 0; i < ingredients.length; i++) {
-			price += ingredients[i].price;
-		}
-		return price;
+			'<p align="right">' + model.getDishPrice(dish) + ' SEK </p>' +
+		'</div>';
 	}
 
 	var getInstructionsHTML = function() {
-		return '' +
-		getInstructionHTML(model.getDish(200)) + 
-		getInstructionHTML(model.getDish(1)) + 
-		getInstructionHTML(model.getDish(2));
+		var fullMenu = model.getFullMenu();
+		var instructions = '';
+		for (var i = 0; i < fullMenu.length; i++) {
+			instructions += getInstructionHTML(fullMenu[i]);
+		}
+		return instructions;
 	}
 
 	var getInstructionHTML = function(dish) {
@@ -52,6 +61,5 @@ var OverviewView = function(container, model) {
 	}
 
 	// Function calls
-	this.overviewContainer.html('<div class="col-md-3"></div>' + getDishes2() + '<h3>Total:<br>' + getTotalPrice2(model.getDish(200).ingredients) * 3 + ' SEK</h3>');
-	this.instructionsContainer.html(getInstructionsHTML());
+	model.addObserver(this);
 }

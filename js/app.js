@@ -8,30 +8,41 @@ $(function() {
 	var detailsView = new DetailsView($('#detailsView'), model);
 	var overviewView = new OverviewView($('#overviewView'), model);
 
-	var costViewController = CostViewController(costView, model);	
-	var selectViewController = SelectViewController(selectView, model);
-	var detailsViewController = DetailsViewController(detailsView, model);
-	var overviewViewController = OverviewViewController(overviewView, model);
+	var costViewController = new CostViewController(this, costView, model);
+	var selectViewController = new SelectViewController(this, selectView, model);
+	var detailsViewController = new DetailsViewController(this, detailsView, model);
+	var overviewViewController = new OverviewViewController(this, overviewView, model);
 
-	// Controller stuff
 	$('#createNewDinner').click(function(){
 		$('#homeScreen').toggleClass('hidden');
 		$('body').toggleClass('hiddenBackgroundImage');
 		$('#dinnerScreen').toggleClass('hidden');
-	});
+	});	
 
-	$('#icecreamDetails').click(function(){
+	this.selectToDetails = function() {
 		$('#selectView').toggleClass('hidden');
 		$('#detailsView').toggleClass('hidden');
-	});
+	}
 
-	$('#confirmDinnerBtn').click(function(){
+	this.detailsToSelect = function() {
+		$('#detailsView').toggleClass('hidden');
+		$('#selectView').toggleClass('hidden');
+	}
+
+	this.dinnerToOverview = function() {
 		$('#dinnerScreen').toggleClass('hidden');
 		$('#overviewScreen').toggleClass('hidden');
-	});
+	};
 
-	$('#printBtn').click(function(){
+	this.overviewToDinner = function() {
+		$('#overviewScreen').toggleClass('hidden');
+		$('#overviewContainer').removeClass('hidden');
+		$('#instructionsContainer').addClass('hidden');
+		$('#dinnerScreen').toggleClass('hidden');
+	};
+
+	this.overviewToInstructions = function() {
 		$('#overviewContainer').toggleClass('hidden');
 		$('#instructionsContainer').toggleClass('hidden');
-	});
+	};
 });

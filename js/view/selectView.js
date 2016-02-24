@@ -1,13 +1,27 @@
 var SelectView = function(container, model) {
 
 	// Variables
-	this.dishes = container.find('#dishes');
+	this.mainType = container.find('#mainType');
+	this.starterType = container.find('#starterType');
+	this.dessertType = container.find('#dessertType');
+	this.search = container.find('#search');
+	this.container = container;
 
 	// Functions
-	var getDishes = function() {
+	this.update = function() {
+		loadView();
+	}
+
+	var loadView = function() {
+		var dishes = container.find('#dishes');
+		var dishType = container.find('#dishType');
+		dishes.html(getDishesHTML());
+		dishType.html(model.getDishType());
+	}
+
+	var getDishesHTML = function() {
 		var dishes = '';
-		var allDishes = model.getAllDishes('starter');
-		console.log(allDishes);
+		var allDishes = model.getAllDishes(model.getDishType(), model.getDishFilter());
 		for (var i = 0; i < allDishes.length; i++) {
 			dishes += getDishHTML(allDishes[i]);
 		}
@@ -18,11 +32,12 @@ var SelectView = function(container, model) {
 		return '' +
 		'<div class="col-md-3">' +
 			'<img src="images/' + dish.image + '" width="100%">' +
-			'<button id="icecreamDetails" class="btn btn-default btn-block">' + dish.name + '</button>' +
+			'<button id="' + dish.id + '" class="btn btn-default btn-block dish-btn">' + dish.name + '</button>' +
 			'<p>' + model.getDummyText() + '</p>' +
 		'</div>';
 	}
 
 	// Function calls
-	this.dishes.html(getDishes(model));
+	model.addObserver(this);
+	loadView();
 }

@@ -1,20 +1,51 @@
-//DinnerModel Object constructor
 var DinnerModel = function() {
  
-	//TODO Lab 2 implement the data structure that will hold number of guest
-	// and selected dinner options for dinner menu
+ 	// Variables
+ 	var dishType = 'main dish';
+	var dishFilter = '';
 	var numberOfGuests = 1;
-	var fullMenu = [];
+	var menu = [];
 	var observers = [];
+	var dishId = -1;
 
-	var notifyObservers = function(arg) {
-		for (var i = 0; observers.length; i++) {
-			observers[i].update(arg);
+	// Observer pattern
+
+	var notifyObservers = function() {
+		for (var i = 0; i < observers.length; i++) {
+			observers[i].update();
 		}
 	}
 
-	this.addObserver = function(observer) {
-		observers.push(observer);
+	this.addObserver = function(ob) {
+		observers.push(ob);
+	}
+
+	// Getters and setters
+	this.setDishId = function(id) {
+		dishId = id;
+		notifyObservers();
+	}
+
+	this.getDishId = function() {
+		return dishId;
+	}
+
+	this.setDishType = function(type) {
+		dishType = type;
+		notifyObservers();
+	}
+
+	this.getDishType = function() {
+		return dishType;
+	}
+
+	this.setDishFilter = function(filter) {
+		dishFilter = filter;
+		notifyObservers();
+	}
+
+	this.getDishFilter = function() {
+		return dishFilter;
 	}
 
 	this.getDummyText = function() {
@@ -22,6 +53,7 @@ var DinnerModel = function() {
 	}
 
 	this.setNumberOfGuests = function(num) {
+		if (num < 1) return;
 		numberOfGuests = num;
 		notifyObservers();
 	}
@@ -33,16 +65,16 @@ var DinnerModel = function() {
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-		for (var i = 0; i < fullMenu.length; i++) {
-			if (fullMenu[i].type === type) {
-				return fullMenu[i];
+		for (var i = 0; i < menu.length; i++) {
+			if (menu[i].type === type) {
+				return menu[i];
 			}
 		}
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		return fullMenu;
+		return menu;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
@@ -56,13 +88,19 @@ var DinnerModel = function() {
 		return allIngredients;
 	}
 
+	this.getDishPrice = function(dish) {
+		var price = 0;
+		for (var i = 0; i < dish.ingredients.length; i++) {
+			price += dish.ingredients[i].price * numberOfGuests;
+		}
+		return price;
+	}
+
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		var totalMenuPrice = 0;
 		for (var i = 0; i < menu.length; i++) {
-			for (var j = 0; j < menu[i].ingredients.length; j++) {
-				totalMenuPrice += menu[i].ingredients[j].price;
-			}
+			totalMenuPrice += this.getDishPrice(menu[i]);
 		}
 		return totalMenuPrice;
 	}
@@ -73,6 +111,8 @@ var DinnerModel = function() {
 		var dish = this.getDish(id);
 		if (typeof dish !== 'undefined') {
 			menu.push(dish);
+			notifyObservers();
+			console.log("katt");
 		}
 	}
 

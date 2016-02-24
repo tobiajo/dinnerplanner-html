@@ -1,10 +1,15 @@
-var CostViewController = function(view, model) {
+var CostViewController = function(mainCtrl, view, model) {
  
-	view.plusButton.click(function(){
+ 	// Function calls
+	view.plusGuest.click(function(){
 		model.setNumberOfGuests(model.getNumberOfGuests() + 1);
 	});
 
-	view.minusButton.click(function(){
+	view.minusGuest.click(function(){
 		model.setNumberOfGuests(model.getNumberOfGuests() - 1);
+	});
+
+	view.confirmDinner.click(function() {
+		mainCtrl.dinnerToOverview();
 	});
 }
