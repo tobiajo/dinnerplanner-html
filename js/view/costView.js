@@ -1,11 +1,16 @@
-//CostView Object constructor
 var CostView = function(container, model) {
-	
-	// Get all the relevant elements of the view (ones that show data
-  	// and/or ones that responed to interaction)
-	this.numberOfGuests = container.find('#numberOfGuests');
+
+	// Variables
 	this.plusButton = container.find('#plusGuest');
 	this.minusButton = container.find('#minusGuest');
-	
-	this.numberOfGuests.html(model.getNumberOfGuests());
+	var numberOfGuests = container.find('#numberOfGuests');
+
+	// Functions
+	this.update = function() {
+		numberOfGuests.html(model.getNumberOfGuests());
+	}
+
+	// Function calls
+	model.addObserver(this);
+	numberOfGuests.html(model.getNumberOfGuests());
 }

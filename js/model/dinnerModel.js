@@ -5,6 +5,17 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 	var numberOfGuests = 1;
 	var fullMenu = [];
+	var observers = [];
+
+	var notifyObservers = function(arg) {
+		for (var i = 0; observers.length; i++) {
+			observers[i].update(arg);
+		}
+	}
+
+	this.addObserver = function(observer) {
+		observers.push(observer);
+	}
 
 	this.getDummyText = function() {
 		return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
@@ -12,6 +23,7 @@ var DinnerModel = function() {
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;
+		notifyObservers();
 	}
 
 	// should return 
