@@ -22,12 +22,7 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 	}
 
 	$scope.getDishPrice = function() {
-		var ingredients = $scope.dish.Ingredients;
-        var price = 0;
-        for (var i = 0; i < ingredients.length; i++) {
-            price += ingredients[i].Quantity;
-        }
-        return price;
+        return Dinner.getDishPrice($scope.dish);
 	}
 
 	$scope.addToMenu = function() {

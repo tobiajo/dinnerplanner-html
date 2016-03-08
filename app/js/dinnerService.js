@@ -14,8 +14,10 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
     this.getDishPrice = function(dish) {
         var priceOut = 0;
-        for (var i = 0; i < dish.Ingredients.length; i++) {
-            priceOut += dish.Ingredients[i].Quantity;
+        if (dish != null) {
+            for (var i = 0; i < dish.Ingredients.length; i++) {
+                priceOut += dish.Ingredients[i].Quantity;
+            }
         }
         return priceOut; 
     }
