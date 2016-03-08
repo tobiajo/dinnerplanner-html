@@ -41,10 +41,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
     this.addDishToMenu = function(dish) {
         menu.push(dish);
-    } 
+    }
     
-
-
     this.setNumberOfGuests = function(num) {
         if (num >= 1) {
         numberOfGuest = num;

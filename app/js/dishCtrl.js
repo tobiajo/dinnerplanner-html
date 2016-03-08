@@ -21,8 +21,17 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 	  	});
 	}
 
-	$scope.addToMenu = function() {
-
+	$scope.getDishPrice = function() {
+		var ingredients = $scope.dish.Ingredients;
+		console.log(ingredients);
+        var price = 0;
+        for (var i = 0; i < ingredients.length; i++) {
+            price += ingredients[i].Quantity;
+        }
+        return price;
 	}
-  
+
+	$scope.addToMenu = function() {
+		Dinner.addDishToMenu($scope.dish);
+	}
 });
