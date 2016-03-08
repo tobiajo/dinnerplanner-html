@@ -3,7 +3,12 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
     var numberOfGuest = 4
     var menu = [];
     var dishIds = [];
-    
+
+    // Getters
+    this.getNumberOfGuests = function() {
+        return numberOfGuest;
+    }
+
     this.getFullMenu = function() {
         return menu;
     }
@@ -15,32 +20,22 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
                 priceOut += dish.Ingredients[i].Quantity;
             }
         }
-        return priceOut; 
-    }
-
-    this.getAllIngredients = function () {
-        var IngredientsOut = [];
-        for (var i = 0; i < menu.length; i++) {
-            if (menu[i] != null) {
-                IngredientsOut = IngredientsOut.concat(menu[i].Ingredients);
-            }
-        }
-        return IngredientsOut;
+        return Math.round(priceOut);
     }
 
     this.getTotalMenuPrice = function() {
         var priceOut = 0;
-        var Ingredients = this.getAllIngredients();
-        for (var i = 0; i < Ingredients.length; i++) {
-            priceOut += Ingredients[i].Quantity;
+        for (var i = 0; i < menu.length; i++) {
+            priceOut += menu[i].Price;
         }
-        return priceOut * this.getNumberOfGuests();    
+        return priceOut * this.getNumberOfGuests();
     }
 
+    // Setters
     this.addDishToMenu = function(dish) {
         var isInMenu = false;
         for (var i = 0; i < menu.length; i++) {
-            if (menu[i] === dish) {
+            if (menu[i].RecipeID === dish.RecipeID) {
                 isInMenu = true;
             }
         }
@@ -59,19 +54,11 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
         }
     }
 
-    this.getNumberOfGuests = function() {
-        return numberOfGuest;
-    }
-
-    this.getFullMenu = function() {
-        return menu;
-    }
-  
+    // BigOven API
     this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'sV1fPGQKrO0b6oUYb6w9kLI8BORLiWox'});
     this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'sV1fPGQKrO0b6oUYb6w9kLI8BORLiWox'});
 
     // Init from cookie
-
     var getDish = this.Dish.get;
     var getDishPrice = this.getDishPrice;
 
@@ -95,6 +82,5 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
     })();
 
     // Return self reference
-
     return this;
 });
