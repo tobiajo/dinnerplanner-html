@@ -16,13 +16,10 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 	  	Dinner.Dish.get({id:$routeParams.dishId},function(data){
 	  		$scope.status = data.Title;
 	  		$scope.dish = data;
+	  		$scope.dish.Price = Dinner.getDishPrice($scope.dish);
 	  	},function(data){
 	  		$scope.status = "There was an error";
 	  	});
-	}
-
-	$scope.getDishPrice = function() {
-        return Dinner.getDishPrice($scope.dish);
 	}
 
 	$scope.addToMenu = function() {

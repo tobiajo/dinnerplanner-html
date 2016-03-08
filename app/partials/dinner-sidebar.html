@@ -19,7 +19,7 @@
         <tbody>
             <tr ng-repeat="dish in getFullMenu()">
                 <td>{{dish.Title}}</td>
-                <td>{{getDishPrice(dish)*getNumberOfGuests()}}</td>
+                <td>{{dish.Price*getNumberOfGuests()}}</td>
             </tr>
             <tr>
                 <td>Total:</td>
