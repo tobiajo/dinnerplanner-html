@@ -6,8 +6,6 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
 
-  	var dishConfirmed = false;
-
 	$scope.status = null;
 	$scope.dish = null;
 
@@ -23,7 +21,7 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 	}
 
 	$scope.addToMenu = function() {
-		if (!dishConfirmed) {
+		if ($scope.dish !== null) {
 			Dinner.addDishToMenu($scope.dish);
 		}
 	}
