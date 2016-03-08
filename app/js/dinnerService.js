@@ -14,27 +14,27 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
     this.getDishPrice = function(dish) {
         var priceOut = 0;
-        for (var i = 0; i < dish.ingredients.length; i++) {
-            priceOut += dish.ingredients[i].Quantity;
+        for (var i = 0; i < dish.Ingredients.length; i++) {
+            priceOut += dish.Ingredients[i].Quantity;
         }
         return priceOut; 
     }
 
     this.getAllIngredients = function () {
-        var ingredientsOut = [];
+        var IngredientsOut = [];
         for (var i = 0; i < menu.length; i++) {
             if (menu[i] != null) {
-                ingredientsOut = ingredientsOut.concat(menu[i].Ingredients);
+                IngredientsOut = IngredientsOut.concat(menu[i].Ingredients);
             }
         }
-        return ingredientsOut;
+        return IngredientsOut;
     }
 
     this.getTotalMenuPrice = function() {
         var priceOut = 0;
-        var ingredients = this.getAllIngredients();
-        for (var i = 0; i < ingredients.length; i++) {
-            priceOut += ingredients[i].Quantity;
+        var Ingredients = this.getAllIngredients();
+        for (var i = 0; i < Ingredients.length; i++) {
+            priceOut += Ingredients[i].Quantity;
         }
         return priceOut * this.getNumberOfGuests();    
     }
