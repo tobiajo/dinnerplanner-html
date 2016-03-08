@@ -5,17 +5,14 @@
 	<p>Number of guest:</p>
     <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
 </div>
-
 <div>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Dish name</th>
-
                 <th>Cost (SEK)</th>
             </tr>
         </thead>
-
         <tbody>
             <tr ng-repeat="dish in getFullMenu()">
                 <td>{{dish.Title}}</td>

@@ -25,6 +25,6 @@
 }
 
 #view5TotalCostCol {
-    border-left: black solid 2px;
-    height: 250px;
+    border-right: black solid 2px;
+    height: 100%;
 }
