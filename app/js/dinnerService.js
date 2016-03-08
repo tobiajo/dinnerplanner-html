@@ -74,19 +74,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
         return menu;
     }
   
-<<<<<<< Updated upstream
-    this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'66J8l00npnHHZcCNLRhxkfW1OHxbojy4'});
-    this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'66J8l00npnHHZcCNLRhxkfW1OHxbojy4'});
-
-  // TODO in Lab 5: Add your model code from previous labs
-  // feel free to remove above example code
-  // you will need to modify the model (getDish and getAllDishes) 
-  // a bit to take the advantage of Angular resource service
-  // check lab 5 instructions for details
-=======
     this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'sV1fPGQKrO0b6oUYb6w9kLI8BORLiWox'});
     this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'sV1fPGQKrO0b6oUYb6w9kLI8BORLiWox'});
->>>>>>> Stashed changes
 
     // Init from cookie
 
