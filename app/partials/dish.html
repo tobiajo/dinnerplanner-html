@@ -9,15 +9,14 @@
                 <h3>{{status}}</h3>
                 <img class="img-rounded" ng-src="{{dish.ImageURL}}" width="304">
 
-                <p><span id="view4DescSpan">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                <p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         non proident, sunt in culpa qui officia deserunt mollit anim id est
                         laborum.</span></p>
-                <button class="btn btn-default" type="button">Back
-                    To Select Dish</button>
+                <a href="#/search" class="btn btn-default" type="button">Back To Select Dish</a>
             </div>
 
             <div class="col-md-6">
@@ -33,7 +32,7 @@
                             </tr>
                         </thead>
 
-                        <tbody id="view4RecipieTableBody" ng-repeat="i in dish.Ingredients">
+                        <tbody ng-repeat="i in dish.Ingredients">
                             <tr>
                                 <td class="amount">{{i.Quantity}} {{i.Unit}}</td>
 
@@ -46,8 +45,8 @@
                 </div>
 
                 <div class="text-center">
-                    <button class="btn btn-default" id="view4ConfirmDishBtn" type="button">Confirm
-                        Dish</button>&nbsp;<b>TOTAL: <span id="view4DishTotalspan"></span> SEK</b>
+                    <button class="btn btn-default" type="button">Confirm
+                        Dish</button>&nbsp;<b>TOTAL: <span></span> SEK</b>
                 </div>
             </div>
 
