@@ -1,5 +1,76 @@
-<!-- We include the sidebar as it is shared across two screens. -->
-<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3 text-center">
+			<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+		</div>
+		<div class="col-md-9" ng-init="getDish()">
 
-<!-- TODO in Lab 5: Display the dish information including image, Description, 
-Instructions, Ingredients and total cost. -->
+            <div class="col-md-6">
+                <h3>{{status}}</h3>
+                <img class="img-rounded" ng-src="{{dish.ImageURL}}" width="304">
+
+                <p><span id="view4DescSpan">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                        laborum.</span></p>
+                <button class="btn btn-default" type="button">Back
+                    To Select Dish</button>
+            </div>
+
+            <div class="col-md-6">
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Amount</th>
+
+                                <th>Ingredient</th>
+
+                                <th>Cost (SEK)</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="view4RecipieTableBody" ng-repeat="i in dish.Ingredients">
+                            <tr>
+                                <td class="amount">{{i.Quantity}} {{i.Unit}}</td>
+
+                                <td class="ingredient">{{i.Name}}</td>
+
+                                <td class="cost">{{i.Quantity}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-default" id="view4ConfirmDishBtn" type="button">Confirm
+                        Dish</button>&nbsp;<b>TOTAL: <span id="view4DishTotalspan"></span> SEK</b>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+</div>

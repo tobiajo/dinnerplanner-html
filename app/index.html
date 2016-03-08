@@ -10,6 +10,8 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Overrides Bootstrap CSS -->
+    <link rel="stylesheet" href="css/style.css">
     <!-- jQuery -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
@@ -28,6 +30,15 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
 
   </head>
   <body>
+    <div class="container-fluid" id="page_head">
+        <div class="row bg-info">
+            <div class="col-md-12">
+                <h1>HOMELETTE</h1>
+                <h4>From the best chefs in the world directly to your kitchen</h4>
+            </div>
+        </div>
+    </div>
+
     <!-- Here in index.html you should put only the layout that is shared among all the screens (e.g. header
     ,footer, etc.). The rest of the view specific layout will go into the html partials (check partials folder) -->
 

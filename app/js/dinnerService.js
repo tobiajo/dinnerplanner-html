@@ -5,17 +5,27 @@
 // the next time.
 dinnerPlannerApp.factory('Dinner',function ($resource) {
   
-  var numberOfGuest = 2;
+  var numberOfGuest = 4;
+
+  var menu = ['dish1','dish2','dish3'];
 
 
   this.setNumberOfGuests = function(num) {
-    numberOfGuest = num;
+    if (num >= 1) {
+      numberOfGuest = num;
+    }
   }
 
   this.getNumberOfGuests = function() {
     return numberOfGuest;
   }
 
+  this.getFullMenu = function() {
+    return menu;
+  }
+  
+  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'1hg3g4Dkwr6pSt22n00EfS01rz568IR6'});
+  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'1hg3g4Dkwr6pSt22n00EfS01rz568IR6'}); 
 
   // TODO in Lab 5: Add your model code from previous labs
   // feel free to remove above example code
