@@ -33,18 +33,14 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
 
     // Setters
     this.addDishToMenu = function(dish) {
-        var isInMenu = false;
         for (var i = 0; i < menu.length; i++) {
             if (menu[i].RecipeID === dish.RecipeID) {
-                isInMenu = true;
+                return;
             }
         }
-
-        if (!isInMenu) {
-            menu.push(dish);
-            dishIds.push(dish.RecipeID);
-            $cookieStore.put('dishIds', dishIds);
-        }
+        menu.push(dish);
+        dishIds.push(dish.RecipeID);
+        $cookieStore.put('dishIds', dishIds);
     }
     
     this.setNumberOfGuests = function(num) {
