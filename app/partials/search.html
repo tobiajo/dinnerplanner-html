@@ -18,10 +18,11 @@
 			    <div class="col-md-6">
 			        <form role="form">
 			            <div class="form-group">
-			                <select class="form-control" ng-model="category" ng-change="search(category)">
-			                    <option value="starter" selected="selected">starter</option>
-			                    <option value="main dish">main dish</option>
-			                    <option value="dessert">dessert</option>
+			                <select class="form-control" ng-model="category" ng-change="search(category)" >
+			                	<option value="" disabled="">Select here or search</option>
+			                    <option value="starter">Starter</option>
+			                    <option value="main">Main dish</option>
+			                    <option value="dessert">Dessert</option>
 			                </select>
 			            </div>
 			        </form>
