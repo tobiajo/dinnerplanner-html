@@ -42,7 +42,16 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     }
 
     this.addDishToMenu = function(dish) {
-        menu.push(dish);
+        var isInMenu = false;
+        for (var i = 0; i < menu.length; i++) {
+            if (menu[i] === dish) {
+                isInMenu = true;
+            }
+        }
+
+        if (!isInMenu) {
+            menu.push(dish);
+        }
     }
     
     this.setNumberOfGuests = function(num) {
