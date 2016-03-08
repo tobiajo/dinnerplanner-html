@@ -48,6 +48,14 @@ dinnerPlannerApp.config(['$routeProvider',
         templateUrl: 'partials/dish.html',
         controller: 'DishCtrl'
       }).
+      when('/summary', {
+          templateUrl: 'partials/summary.html',
+          controller: 'DinnerCtrl'
+      }).
+      when('/print', {
+          templateUrl: 'partials/print.html',
+          controller: 'DinnerCtrl'
+      }).
       // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
       otherwise({
         redirectTo: '/home'
