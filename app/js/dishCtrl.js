@@ -33,5 +33,6 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 
 	$scope.addToMenu = function() {
 		Dinner.addDishToMenu($scope.dish);
+		console.log(Dinner.getFullMenu);
 	}
 });
