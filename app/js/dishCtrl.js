@@ -6,14 +6,14 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
 
+  	var dishConfirmed = false;
+
 	$scope.status = null;
 	$scope.dish = null;
 
 	$scope.getDish = function() {
-	  	console.log();
 	  	$scope.status = "Searching...";
 	  	Dinner.Dish.get({id:$routeParams.dishId},function(data){
-	  		console.log(data);
 	  		$scope.status = data.Title;
 	  		$scope.dish = data;
 	  	},function(data){
@@ -23,7 +23,6 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 
 	$scope.getDishPrice = function() {
 		var ingredients = $scope.dish.Ingredients;
-		console.log(ingredients);
         var price = 0;
         for (var i = 0; i < ingredients.length; i++) {
             price += ingredients[i].Quantity;
@@ -32,7 +31,8 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 	}
 
 	$scope.addToMenu = function() {
-		Dinner.addDishToMenu($scope.dish);
-		console.log(Dinner.getFullMenu);
+		if (!dishConfirmed) {
+			Dinner.addDishToMenu($scope.dish);
+		}
 	}
 });
