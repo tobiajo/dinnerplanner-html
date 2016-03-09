@@ -24,7 +24,12 @@
     border-bottom: black solid 2px;
 }
 
-#view5TotalCostCol {
+#view2 {
     border-right: black solid 2px;
     height: 100%;
+}
+
+#view5TotalCostCol {
+    border-left: black solid 2px;
+    height: 300px;
 }

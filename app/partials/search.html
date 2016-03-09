@@ -1,9 +1,9 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-3 text-center" id="view5TotalCostCol">
+		<div class="col-md-2 text-center" id="view2">
 			<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl" />
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-10">
 			<div class="row bg-info" id="searchPanel">
 			    <div class="col-md-6">
 			        <div class="input-group">
@@ -28,15 +28,15 @@
 			        </form>
 			    </div>
 			</div>
-		</div>
-		{{status}}
-		<div ng-repeat="dish in dishes">
-			 <div class="col-md-2">
-                 <h4>{{dish.Title}}</h4>
-				 <a ng-href="#/dish/{{dish.RecipeID}}">
-				 	<img ng-src="{{dish.ImageURL}}"  width="200" height="200" />
-				 </a>
-			 </div>
-		</div>
+		    {{status}}
+		    <div ng-repeat="dish in dishes">
+			    <div class="col-md-2">
+                    <h4>{{dish.Title}}</h4>
+				    <a ng-href="#/dish/{{dish.RecipeID}}">
+				 	    <img ng-src="{{dish.ImageURL}}"  width="200" height="200" />
+				     </a>
+			     </div>
+		    </div>
+	    </div>
 	</div>
 </div>
