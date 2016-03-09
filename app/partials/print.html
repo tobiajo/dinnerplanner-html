@@ -3,19 +3,19 @@
         <ng-include src="'partials/summary_head.html'" ng-controller="DinnerCtrl"></ng-include>
     </div>
     <div class="col-md-12">
-    <div class="row" ng-repeat="dish in getFullMenu()">
-        <div class="row">
-            <div class="col-md-4">
-	            <img ng-src="{{dish.ImageURL}}"  width="200" height="200" />
-            </div>
-            <div class="col-md-4">
-                <h3>{{dish.Title}}</h3>
-                <p>{{dish.Description}}</p>
-            </div>
-            <div class="col-md-4">
-                <p>{{dish.Instructions}}</p>
+        <div class="row" ng-repeat="dish in getFullMenu()">
+            <div class="row">
+                <div class="col-md-4">
+	                <img ng-src="{{dish.ImageURL}}"  width="200" height="200" />
+                </div>
+                <div class="col-md-4">
+                    <h3>{{dish.Title}}</h3>
+                    <p>{{dish.Description}}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>{{dish.Instructions}}</p>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </div>

@@ -1,28 +1,28 @@
 <div class="container-fluid">
-<div class="row bg-info text-center">
-    <ng-include src="'partials/summary_head.html'" ng-controller="DinnerCtrl"></ng-include>
-</div>
-<div class="row">
-    <div class="col-md-12" id="view5">
-        <div class="row">
-            <div class="col-md-9" >
-		        <div ng-repeat="dish in getFullMenu()">
-			        <div class="col-md-3">
-                        <h4>{{dish.Title}}</h4>
-				        <a ng-href="#/dish/{{dish.RecipeID}}">
-				 	    <img ng-src="{{dish.ImageURL}}"  width="200" height="200" />
-				        </a>
-			        </div>
-		        </div>
+    <div class="row bg-info text-center">
+        <ng-include src="'partials/summary_head.html'" ng-controller="DinnerCtrl"></ng-include>
+    </div>
+    <div class="row">
+        <div class="col-md-12" id="view5">
+            <div class="row">
+                <div class="col-md-9" >
+		            <div ng-repeat="dish in getFullMenu()">
+			            <div class="col-md-3">
+                            <h4>{{dish.Title}}</h4>
+				            <a ng-href="#/dish/{{dish.RecipeID}}">
+				 	            <img ng-src="{{dish.ImageURL}}"  width="200" height="200" />
+				            </a>
+			            </div>
+		            </div>
+                </div>
+                <div class="col-md-3" id="view5TotalCostCol">
+                    <h3>Total: {{getTotalMenuPrice()}} SEK</h3>
+                </div>
             </div>
-            <div class="col-md-3" id="view5TotalCostCol">
-                <h3>Total: {{getTotalMenuPrice()}} SEK</h3>
+            <hr>
+            <div class="row text-center">
+                <a href="#/print" class="btn btn-primary">Print Recipie</a>       
             </div>
-        </div>
-        <hr>
-        <div class="row text-center">
-            <a href="#/print" class="btn btn-primary">Print Recipie</a>       
         </div>
     </div>
-</div>
 </div>
